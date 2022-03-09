@@ -31,6 +31,8 @@ function FilteredEventsPage(props) {
             }
 
             setLoadedEvents(events);
+        }else {
+            console.log(3)
         }
     }, [data]);
 
@@ -45,7 +47,7 @@ function FilteredEventsPage(props) {
         return (
             <Fragment>
                 {pageHeadData}
-                <p className='center'>Loading...</p>;
+                <p className='center'>Loading...</p>
             </Fragment>
         );
     }
