@@ -25,7 +25,7 @@ async function handler(req, res) {
         };
 
         const db = client.db();
-        const result = await db.collection('comments').insertOne({newComment});
+        const result = await db.collection('comments').insertOne(newComment);
 
         console.log(result);
 
@@ -35,11 +35,10 @@ async function handler(req, res) {
     }
 
     if(req.method === 'GET') {
-        const dummyList = [
-            {id: 'c1', name: 'Haein', text: 'A first Comment'},
-            {id: 'c2', name: 'Maeng', text: 'A second Comment'}
-        ];
-        res.status(200).json({comments: dummyList});
+        const db = client.db();
+        // id를 기준으로 descending order로 sort 
+        const documents = await db.collection('comments').find().sort({_id: -1}).toArray();
+        res.status(200).json({comments: documents});
     }
     client.close();
 }
