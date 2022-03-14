@@ -42,7 +42,7 @@ function NewsletterRegistration() {
         notificationCtx.showNotification({
           title: "Success!",
           message: "Successfully Registered for Newsletter",
-          status: "success"
+          status: 'success'
         });
       })
       .catch(error => {
